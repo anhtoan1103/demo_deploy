@@ -1,0 +1,11 @@
+doctype html
+html
+   head
+      title Hello Pug
+   body
+    include ./header.pug
+    p.greetings#people Hello World!
+    img(src = "/download.jpeg", alt = "Testing Image")
+    p=name
+    p=url
+    include ./footer.pug

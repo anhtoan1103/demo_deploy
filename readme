@@ -1,0 +1,12 @@
+npm init
+mongod --dbpath $HOME/data
+
+2	
+POST
+
+The POST method requests that the server accept the data enclosed in the request as a new object/entity of the resource identified by the URI.
+
+3	
+PUT
+
+The PUT method requests that the server accept the data enclosed in the request as a modification to existing object identified by the URI. If it does not exist then the PUT method should create one.
