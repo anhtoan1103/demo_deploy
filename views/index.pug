@@ -8,4 +8,13 @@ html
     img(src = "/download.jpeg", alt = "Testing Image")
     p=name
     p=url
+    p=message
     include ./footer.pug
+    if message=="Logged in"
+      div
+         a(href="/logout") Logout
+    else
+      div
+         a(href="/login") login
+      div
+         a(href="/register") register

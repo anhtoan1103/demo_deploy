@@ -10,3 +10,14 @@ The POST method requests that the server accept the data enclosed in the request
 PUT
 
 The PUT method requests that the server accept the data enclosed in the request as a modification to existing object identified by the URI. If it does not exist then the PUT method should create one.
+
+Phân biệt session với cookie:
+session: lưu trên server, khi lưu session, 1 cookie dc tự động lưu để xác định user cho session.
+cookie: lưu trên client. có thể bị thay đổi dễ dàng
+cache: lưu các resource để máy load nhanh hơn
+
+RESTful API không sử dụng session và cookie, nó sử dụng access_token với mỗi request, nó là một tiêu chuẩn trong việc thiết kế API nhằm tạo ra sự thuận tiện trong việc quản lý tài nguyên.
+RESTful API là một tiêu chuẩn trong việc thiết kế API cho ứng dụng web để tiện trong việc quản lý các resource. Nó chú trọng vào các tài nguyên hệ thống(tệp văn bản, hình ảnh, âm thanh, video hoặc dữ liệu động, ..) bao gồm các trạng thái tài nguyên được định dạng và truyền tải thông qua HTTP
+PUT: nếu như document không tồn tại thì tạo mới, nếu như tồn tại thì cập nhật toàn bộ các trường của document
+PATCH: nếu như document không tồn tạo thì không tạo mới, nếu như tồn tại thì chỉ cập nhật hoặc thêm trường mới vào
+DEBUG: DEBUG=express:* nodemon index.js

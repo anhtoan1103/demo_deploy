@@ -1,0 +1,20 @@
+html
+html
+   head
+      title Login
+   body
+    if (message)
+        h4 #{message}
+    form(action = "/login", method = "POST")
+         div
+            label(for = "username") username:   
+            input(name = "username" )
+         br
+         div
+            label(for = "password") password:
+            input(name = "password" type="password" required)
+         br
+         button(type = "submit") login
+         if (save)
+            button
+                a(href="/register") register
