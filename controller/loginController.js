@@ -13,7 +13,7 @@ class LoginController {
         }
     }
     
-    post(req, res) {
+    post(req, res, next) {
         if(req.body.username && req.body.password) {
             //check if user exist
             User.exists({username: req.body.username, password: req.body.password}).then((user) => {
@@ -31,7 +31,9 @@ class LoginController {
                     }
                     res.render('login', {message: 'wrong username or password!', save: req.session.saver})
                 }
-            })}
+            })
+            next()
+        }
         else {
             res.status(400)
             res.send("Invailed feild input")
@@ -39,4 +41,4 @@ class LoginController {
     }
 }
 
-module.exports = new LoginController 
+module.exports = new LoginController

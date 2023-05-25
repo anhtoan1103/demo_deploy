@@ -5,8 +5,9 @@ class RegisterController {
         //check if login?
         if(req.session.user) {
             res.redirect('/')
-        } else 
-        res.render('register')
+        } else {
+            res.render('register')
+        }
     }
 
     post(req, res) {
@@ -33,4 +34,4 @@ class RegisterController {
 
 }
 
-module.exports = new RegisterController 
+module.exports = new RegisterController

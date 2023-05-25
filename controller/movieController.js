@@ -4,7 +4,6 @@ movies = [
     {id: 103, name: "The Dark Knight", year: 2008, rating: 9},
     {id: 104, name: "12 Angry Men", year: 1957, rating: 8.9}
 ]
-//GET Router
 class MovieController {
 
     movies = [
@@ -92,4 +91,4 @@ class MovieController {
     }
 }
 
-module.exports = new MovieController 
+module.exports = new MovieController

@@ -4,7 +4,7 @@ const registerRouter = require('./register')
 const homeRouter = require('./home')
 const logoutRouter = require('./logout')
 
-route = (app) => {
+router = (app) => {
     app.use('/login', loginRouter)
     app.use('/movie', movieRouter)
     app.use('/register', registerRouter)
@@ -12,4 +12,4 @@ route = (app) => {
     app.use('/logout', logoutRouter)
 }
 
-module.exports = route
+module.exports = router
