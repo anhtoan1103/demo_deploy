@@ -26,6 +26,7 @@ app.use(upload.array())
 
 // for using cookie parser
 app.use(cookieParser())
+require('dotenv').config();
 const mongoose = require('./config/db')
 
 // for using session
@@ -41,10 +42,10 @@ app.get('/favicon.ico', (req, res) => res.status(204).end());
 route(app)
 app.use('/login', (req, res, next) => {
     if(req.session.isLogin) {
-        req.session.isLogin = True
+        req.session.isLogin = false
     }
     else {
-        req.session.isLogin = False
+        req.session.isLogin = true
     }
 })
 

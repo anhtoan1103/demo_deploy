@@ -1,5 +1,7 @@
 const User = require('../models/user')
 
+const bcrypt =  require('bcrypt')
+const saltRounds = 10
 class RegisterController {
     get(req, res) {
         //check if login?
@@ -19,11 +21,15 @@ class RegisterController {
                     res.render('register', {message: 'User existed'})
                 }
                 else {
-                    const newUser = new User({username: req.body.username, password: req.body.password})
-                    newUser.save()
-                    // render login
-                    req.session.message = 'sign up success'
-                    res.redirect('login')
+                    bcrypt.genSalt(saltRounds, (err, salt) => {
+                        bcrypt.hash(req.body.password, salt, (err, hash) => {
+                            const newUser = new User({username: req.body.username, password: hash})
+                            newUser.save()
+                            req.session.message = 'sign up success'
+                            // render login
+                            res.redirect('login')
+                        })
+                    })
                 }
             })}
         else {

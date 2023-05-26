@@ -3,6 +3,8 @@ const session = require('express-session')
 app = express()
 app.use(session({secret: 'oh shit, this is a secret'}))
 const User = require('../models/user')
+const bcrypt = require('bcrypt')
+
 class LoginController {
     get(req, res) {
         if(req.session.user) {
@@ -15,15 +17,18 @@ class LoginController {
     
     post(req, res, next) {
         if(req.body.username && req.body.password) {
-            //check if user exist
-            User.exists({username: req.body.username, password: req.body.password}).then((user) => {
+            User.findOne({username: req.body.username}).then((user) => {
+                //check if user exist
                 if(user) {
-                    //login success
-                    console.log(user)
-                    req.session.user = user
-                    res.redirect('/')
-                }
-                else {
+                    bcrypt.compare(req.body.password, user.password, function(err, result) {
+                        //login success
+                        console.log(result)
+                        if(result) {
+                            req.session.user = user
+                            res.redirect('/')
+                        }
+                    });                    
+                } else {
                     res.render('login', {message: 'wrong username or password!', save: req.session.isLogin})
                 }
             })
