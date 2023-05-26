@@ -40,13 +40,12 @@ app.get('/favicon.ico', (req, res) => res.status(204).end());
 
 route(app)
 app.use('/login', (req, res, next) => {
-    if(req.session.count) {
-        req.session.count++
+    if(req.session.isLogin) {
+        req.session.isLogin = True
     }
     else {
-        req.session.count=1
+        req.session.isLogin = False
     }
-    console.log(req.session.count)
 })
 
 app.listen(3000, () => {

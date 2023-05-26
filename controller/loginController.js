@@ -24,12 +24,7 @@ class LoginController {
                     res.redirect('/')
                 }
                 else {
-                    req.session.saver = 0
-                    // render login 
-                    if(req.session.count >=2) {
-                        req.session.saver = 1
-                    }
-                    res.render('login', {message: 'wrong username or password!', save: req.session.saver})
+                    res.render('login', {message: 'wrong username or password!', save: req.session.isLogin})
                 }
             })
             next()
